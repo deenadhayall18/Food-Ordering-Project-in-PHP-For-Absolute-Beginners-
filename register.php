@@ -1,4 +1,6 @@
 <?php
+include 'config.php';
+
 if(!empty($_POST['submit']))
 {
 	$username=$_POST['username'];
@@ -11,16 +13,17 @@ if(!empty($_POST['submit']))
 	$lname=$_POST['lastname'];
 	$dob=$_POST['dob'];
 	
-	$conn=mysqli_connect("localhost","root","  ","bhavya");
-	if(!$conn)
-	{
-		die("connect failed:".mysqli_connect_error());
-	}
-	
+	// $conn=mysqli_connect("localhost","root","","bhavya");
+	// if(!$conn)
+	// {
+	// 	die("connect failed:".mysqli_connect_error());
+	// }
+
 	$sql="INSERT INTO register (firstname,lastname,dob, username, password, address, email, Phno)
 	VALUES('$fname','$lname','$dob','$username','$password','$address','$email', '$phno')";
 
 	$res = mysqli_query($conn,$sql);
+	
 	// echo $res = $conn->query($sql);
 	
 	if($res)
@@ -29,7 +32,7 @@ if(!empty($_POST['submit']))
 	}
 	else
 	{
-		$msgg =  "errorring in inserting data".mysqli_error($conn);
+		$msgg =  "Error in inserting data".mysqli_error($conn);
 	}
 	mysqli_close($conn);
 }
@@ -95,7 +98,7 @@ if(!empty($_POST['submit']))
 	</style>
 
 </head>
-<body style="background-size:10%;background:url('76.jpg')no-repeat fixed" >
+<body style="background-size:10%;background:url('images/76.jpg')no-repeat fixed" >
 	<center>
 		<h2 style="color:#195411"><u><b>NEW REGISTERATION</b></u></h2>	
 		

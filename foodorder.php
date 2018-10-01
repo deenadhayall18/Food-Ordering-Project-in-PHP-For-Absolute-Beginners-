@@ -9,7 +9,9 @@ if(!empty($_SESSION['food'])){
 if(empty($_SESSION['auth'])){
 	header('location:user.php');
 }
-$conn = mysqli_connect('localhost','root','  ','bhavya');
+include 'config.php';
+
+// $conn = mysqli_connect('localhost','root','','bhavya');
 $sql="SELECT * FROM product";
 $records=mysqli_query($conn,$sql);
 
@@ -73,7 +75,6 @@ if(!empty($_POST['submit'])){
 			// print_r($row);
 			// echo '</pre>';
 			?>
-
 
 			<table>
 				<tr>

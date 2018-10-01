@@ -1,13 +1,15 @@
 
 
 <html>
-<body background="90.jpg">
+<body background="images/90.jpg">
 	<?php
-	$server=mysqli_connect("localhost","root","  ","bhavya");
-	if(!$server)
-	{
-		die("connection failed".mysqli_connect_error);
-	}
+	include 'config.php';
+
+	// $server=mysqli_connect("localhost","root","","bhavya");
+	// if(!$server)
+	// {
+	// 	die("connection failed".mysqli_connect_error);
+	// }
 	$a=$_POST["t11"];
 	$b=$_POST["t12"];
 
@@ -27,7 +29,7 @@
 		{
 			echo "<script>alert('Order is Successfully.,..');</script>";
 		}
-		if(mysqli_query($server,$sqli))
+		if(mysqli_query($conn,$sqli))
 		{ 
 			echo "inserted successfully";
 		}

@@ -13,12 +13,13 @@ if (isset($_GET['logout'])) {
 	unset($_SESSION['username']);
 	header("location: admin.php");
 }
-$con=mysqli_connect("localhost","root","  ","bhavya");
-if (mysqli_connect_errno())
-{
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-$result = mysqli_query($con,"SELECT * FROM orders_details");
+include 'config.php';
+// $con=mysqli_connect("localhost","root","","bhavya");
+// if (mysqli_connect_errno())
+// {
+// 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+// }
+$result = mysqli_query($conn,"SELECT * FROM orders_details");
 echo "<center>";
 echo "<table bgcolor='lightblue' class='table table-hover' border='5' >
 <tr style='background-color: #a2d5ff;'>
@@ -57,7 +58,7 @@ while($row = mysqli_fetch_array($result))
 	}
 	echo "</table>";
 	echo "</center>";
-	mysqli_close($con);
+	mysqli_close($conn);
 
 	?>
 	<link href="bootstrap.css" rel="stylesheet" id="bootstrap-css">

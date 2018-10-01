@@ -1,12 +1,14 @@
 <?php
+include 'config.php';
+
 session_start();
 $username = "";
 $errors = array(); 
-$db = mysqli_connect('localhost', 'root', '  ', 'bhavya');
+// $conn = mysqli_connect('localhost', 'root','', 'bhavya');
 
 if (isset($_POST['login_user'])) {
-	$username = mysqli_real_escape_string($db, $_POST['username']);
-	$password = mysqli_real_escape_string($db, $_POST['password']);
+	$username = mysqli_real_escape_string($conn, $_POST['username']);
+	$password = mysqli_real_escape_string($conn, $_POST['password']);
 
 	if (empty($username)) {
 		array_push($errors, "Username is required");
@@ -15,7 +17,7 @@ if (isset($_POST['login_user'])) {
 		array_push($errors, "Password is required");
 	}
 	$query = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
-	$results = mysqli_query($db, $query);
+	$results = mysqli_query($conn, $query);
 	if (mysqli_num_rows($results) == 1) {
 		$_SESSION['username'] = $username;
 		$_SESSION['success'] = "You are now logged in";

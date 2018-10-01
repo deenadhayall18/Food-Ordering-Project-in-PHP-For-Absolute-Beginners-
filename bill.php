@@ -3,6 +3,7 @@ session_start();
 if(empty($_SESSION['food'])){
 	header("location:foodorder.php");
 }
+include 'config.php';
 
 
 if(!empty($_POST['submit'])){
@@ -10,7 +11,7 @@ if(!empty($_POST['submit'])){
 	$user = $_POST['user'];
 	$total = $_POST['total'];
 	$date = $_POST['date'];
-	$conn = mysqli_connect('localhost','root','  ','bhavya');
+	// $conn = mysqli_connect('localhost','root','  ','bhavya');
 	$sql="INSERT INTO orders_details(user,food_order_details,total,date)VALUES('$user','$food_order_details','$total','$date')";
 	$records=mysqli_query($conn,$sql);
 	if(!empty($records)){

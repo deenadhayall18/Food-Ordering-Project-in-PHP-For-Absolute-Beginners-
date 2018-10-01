@@ -1,6 +1,9 @@
 <?php 
+include 'config.php';
+
 if(isset($_POST['submit'])){ 
-	$conn = mysqli_connect("localhost","root","  ","bhavya");
+	// $conn = mysqli_connect("localhost","root","","bhavya");
+
 	$query = "SELECT * FROM register WHERE username='".$_POST['username']."' AND password='".$_POST['password']."'";
 	$sql = mysqli_query($conn,$query); 
 	$res = mysqli_num_rows($sql);
@@ -76,7 +79,7 @@ if(isset($_POST['submit'])){
 	</style>
 
 </head>
-<body style="background-size:cover !important;background:url('83.jpg')fixed" >
+<body style="background-size:cover !important;background:url('images/83.jpg')fixed" >
 	<center>
 		<h2 style="color:#000"><u><b>USER LOGIN PAGE</b></u></h2>	
 		

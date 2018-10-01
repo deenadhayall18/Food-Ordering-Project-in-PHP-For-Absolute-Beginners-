@@ -1,12 +1,14 @@
 <?php 
+include 'config.php';
+
 session_start(); 
 if (!isset($_SESSION['username'])) {
 	header('location: admin.php');
 }
 ?>
 <?php
-$server=mysqli_connect("localhost","root","  ","bhavya");
-if(!$server) {die("connection failed".mysqli_connect_error); }
+// $server=mysqli_connect("localhost","root","","bhavya");
+// if(!$server) {die("connection failed".mysqli_connect_error); }
 
 if(isset($_POST["insert"])){
 	$pic = $_POST["pname"];
@@ -17,7 +19,7 @@ if(isset($_POST["insert"])){
 	// die; 
 	if(move_uploaded_file($_FILES["foodimage"]["tmp_name"],$path)) {
 		$sqli ="INSERT INTO product(product_name, price, images)VALUES('$pic','$price','$imagename')";
-		$res = mysqli_query($server,$sqli);
+		$res = mysqli_query($conn,$sqli);
 		if(!empty($res)){
 			$msg = 'Product Details Added Successfully';
 		}
